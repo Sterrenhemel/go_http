@@ -86,11 +86,12 @@ affinity: {}
 
 configs:
   path: "configs/*.yaml"
-  conf: "conf"
 
 env:
   path: "env/*.yaml"
-  name: "env"
+
+json:
+  path: "configs/*.json"
 
 # Observability configuration.
 # ref: https://apisix.apache.org/docs/apisix/plugins/prometheus/
