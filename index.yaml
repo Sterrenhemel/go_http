@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  http:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-11-13T04:58:35.360290094Z"
+    description: A Helm chart for Kubernetes
+    digest: 5f68292381a7485553821ce3b60e96bcfc72f29680757319b39b0f8521d1d426
+    name: http
+    type: application
+    urls:
+    - https://github.com/Sterrenhemel/go_http/releases/download/http-0.1.1/http-0.1.1.tgz
+    version: 0.1.1
+generated: "2022-11-13T04:58:35.360310495Z"
