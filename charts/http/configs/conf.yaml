@@ -1,0 +1,113 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+inf:
+  service_name: http
+  env: prod
+server:
+  http:
+    addr: 0.0.0.0:8080
+    timeout: 10s
+  grpc:
+    addr: 0.0.0.0:9000
+    timeout: 10s
+data_source:
+  database:
+    main:
+      driver: mysql
+      source: "username:password@tcp(host:3306)/v?timeout=10000ms&readTimeout=10000ms&writeTimeout=10000ms&parseTime=true&loc=Local&charset=utf8,utf8mb4"
+  redis:
+    main:
+      addr: xxxx:6379
+      read_timeout: 2s
+      write_timeout: 2s
+    count:
+      addr: xxxx:6379
+      read_timeout: 2s
+      write_timeout: 2s
+    lock:
+      addr: xxxx:6379
+      read_timeout: 2s
+      write_timeout: 2s
+    auth:
+      addr: xxxx:6379
+      read_timeout: 2s
+      write_timeout: 2s
+    user:
+      addr: xxxx:6379
+      read_timeout: 2s
+      write_timeout: 2s
+    contains:
+      addr: xxxx:6379
+      read_timeout: 2s
+      write_timeout: 2s
+  nebula:
+    relation:
+      address:
+        - "xxxx:9669"
+  mongodb:
+    main:
+      source: xxxxx
+  s3:
+    main:
+      endpoint: xxxxx
+      accessKey: xxxxxx
+      secretKey: xxxxx
+      useSSL: true
+    img:
+      endpoint: xxxxxx
+      accessKey: xxxxx
+      secretKey: xxxxx
+      useSSL: true
+  tikv:
+    count:
+      pd_addrs: "xxxx"
+    contains:
+      pd_addrs: "xxxx"
+  kafka:
+    main:
+      addrs:
+        - "xxxxx"
+      algo: "sha256"
+      user_name: "xxxxx"
+      password: "xxxxxx"
+  rocketmq:
+    action:
+      nam_srvs: "xxxxx:9876"
+    count:
+      nam_srvs: "xxxxx:9876"
+  es:
+    main:
+      addrs:
+        - "http://xxxxx:9200"
+      username: "elastic"
+      password: "changeme"
+  milvus:
+    main:
+      addr: "xxxxx:19530"
+sdk:
+  firebase:
+    credentials_file_path: "xxxxx"
+  getStreams_service:
+    api_key: xx
+    api_secret: xx
+  bunny:
+    access_key: "xxxxx"
+    biz_library_id:
+      vapp: xxxx
+    cdn_domain_map:
+      img:
+        - "xxxxx"
+      video:
+        - "xxxxx"
+  jina:
+    image_pipeline: ""
+    image_embedding: ""
+    text_pipeline: ""
+    text_embedding: ""
+    video_pipeline: ""

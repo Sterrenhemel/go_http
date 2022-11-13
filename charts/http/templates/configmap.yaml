@@ -1,0 +1,28 @@
+{{ $currentScope := .}}
+{{- $cpath := .Values.configs.path }}
+{{ range $path, $_ :=  .Files.Glob  $cpath }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ base $path | trimSuffix ".yaml" }}-configmap
+data:
+  {{- with $currentScope}}
+    {{ base $path }}: |
+    {{- ( .Files.Get $path ) | nindent 8 }}
+    {{- end }}
+---
+{{ end }}
+---
+{{ $currentScope := .}}
+{{- $cpath := .Values.env.path }}
+{{ range $path, $_ :=  .Files.Glob  $cpath }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ base $path | trimSuffix ".yaml" }}-configmap
+data:
+  {{- with $currentScope}}
+    {{- ( .Files.Get $path ) | nindent 2 }}
+  {{- end }}
+---
+{{ end }}
