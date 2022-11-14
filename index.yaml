@@ -3,6 +3,16 @@ entries:
   http:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-11-14T15:38:42.262061319Z"
+    description: A Helm chart for Kubernetes
+    digest: 8393afaf417b6b9e8db1895c48ce0df728f1574b30ee164a1fc71e8c1acc7180
+    name: http
+    type: application
+    urls:
+    - https://github.com/Sterrenhemel/go_http/releases/download/http-0.1.3/http-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-11-13T06:26:49.327903781Z"
     description: A Helm chart for Kubernetes
     digest: 97322ada8410af4a8d3e49c195a4bb989376cbb41505d8ea48feb321a27c9e6d
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/Sterrenhemel/go_http/releases/download/http-0.1.1/http-0.1.1.tgz
     version: 0.1.1
-generated: "2022-11-13T06:26:49.327909581Z"
+generated: "2022-11-14T15:38:42.26207362Z"
