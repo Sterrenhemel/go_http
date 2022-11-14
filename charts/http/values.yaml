@@ -6,7 +6,7 @@ replicaCount: 3
 
 image:
   repository: nginx
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -51,6 +51,10 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+    - host: chart-example.local2
       paths:
         - path: /
           pathType: ImplementationSpecific

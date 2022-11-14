@@ -34,7 +34,6 @@ spec:
   selector:
     matchLabels:
       {{- include "http.labels" . | nindent 6 }}
-      app.kubernetes.io/service: gohttp
   endpoints:
     - scheme: http
       targetPort: prometheus

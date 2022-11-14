@@ -60,3 +60,17 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{- define "ingress.dnshost_tmp" -}}
+{{- if .Values.ingress.enabled }}
+{{- range .Values.ingress.hosts }}
+{{- .host }},
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- define "ingress.dnshost" -}}
+{{- if .Values.ingress.enabled }}
+{{- "external-dns.alpha.kubernetes.io/hostname: "}} {{- include "ingress.dnshost_tmp" . | trimSuffix ","  }}
+{{- end }}
+{{- end }}
