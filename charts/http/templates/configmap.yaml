@@ -1,43 +1,53 @@
 {{- $currentScope := .}}
 {{- $cpath := .Values.configs.path }}
+{{- $cnamespace := .Release.Namespace }}
 {{- range $path, $_ :=  .Files.Glob  $cpath }}
+{{- $currentName := printf "%s-%s" (base $path | trimSuffix ".yaml") ("configmap") }}
+{{- if not (lookup "v1" "ConfigMap" $cnamespace $currentName) }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ base $path | trimSuffix ".yaml" }}-configmap
+  name: {{ $currentName }}
 data:
   {{- with $currentScope}}
     {{ base $path }}: |
     {{- ( .Files.Get $path ) | nindent 8 }}
     {{- end }}
+{{- end }}
 ---
 {{- end }}
 ---
 {{- $ecurrentScope := .}}
 {{- $epath := .Values.env.path }}
 {{- range $path, $_ :=  .Files.Glob  $epath }}
+{{- $currentName := printf "%s-%s" (base $path | trimSuffix ".yaml") ("configmap") }}
+{{- if not (lookup "v1" "ConfigMap" $cnamespace $currentName) }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ base $path | trimSuffix ".yaml" }}-configmap
+  name: {{ $currentName }}
 data:
   {{- with $ecurrentScope}}
     {{- ( .Files.Get $path ) | nindent 2 }}
   {{- end }}
+{{- end }}
 ---
 {{- end }}
 ---
 {{- $jcurrentScope := .}}
 {{- $jpath := .Values.json.path }}
 {{- range $path, $_ :=  .Files.Glob  $jpath }}
+{{- $currentName := printf "%s-%s" (base $path | trimSuffix ".json") ("configmap") }}
+{{- if not (lookup "v1" "ConfigMap" $cnamespace $currentName) }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ base $path | trimSuffix ".json" }}-configmap
+  name: {{ $currentName }}
 data:
   {{- with $jcurrentScope}}
     {{ base $path }}: |
     {{- ( .Files.Get $path ) | nindent 8 }}
     {{- end }}
+{{- end }}
 ---
 {{- end }}
