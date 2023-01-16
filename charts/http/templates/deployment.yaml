@@ -69,6 +69,11 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+            {{- if .Values.debug }}
+            - name: debug
+              containerPort: 2345
+              protocol: TCP
+            {{- end }}
           livenessProbe:
             httpGet:
               path: /

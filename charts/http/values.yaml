@@ -4,6 +4,7 @@
 
 replicaCount: 3
 serviceType: "http"
+debug: false
 
 image:
   repository: nginx
